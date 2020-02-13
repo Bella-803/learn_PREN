@@ -2,6 +2,7 @@ import express from "express";
 import bodyParser from "body-parser";
 import logger from "morgan";
 import router from "./server/routes/user";
+// module.exports = app;
 
 const port = 3000;
 
@@ -20,5 +21,5 @@ app.get("*", (req,res) => {
 });
 
 app.listen(port, () => {
-    console.log(`The server is running on port ${port}`);
+    console.log(`The server ${process.env.NODE_ENV} is running on port ${port}`);
 });

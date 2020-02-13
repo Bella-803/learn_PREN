@@ -7,9 +7,21 @@ export default (sequelize, DataTypes) => {
     },
     password: {
       type: DataTypes.STRING,
+      allowNull: {
+        args: false,
+        msg: "please enter your password"
+      }
     },
     email: {
-      type: DataTypes.STRING
+      type: DataTypes.STRING,
+      allowNull: {
+        args: false,
+        msg: "please enter your email"
+      },
+      unique: {
+        args: true,
+        msg: "Email already exists"
+      }
     },
   }, {
     hooks: {
@@ -27,3 +39,4 @@ export default (sequelize, DataTypes) => {
   };
   return Users;
 };
+

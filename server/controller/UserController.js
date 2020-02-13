@@ -29,12 +29,7 @@ class UserController {
                 };
 
                 const createUser = await Users.create(user);
-                  
-                //  const createUser = await Users.create({
-                //   fullName,
-                //   password,
-                //   email
-                // });
+               
              if (createUser){
  
              createUser.dataValues.password = undefined;
@@ -49,8 +44,6 @@ class UserController {
                   user: createUser.dataValues
               });
              }
-
-              
 
          } catch (error) {
              res.status(500).send({
@@ -83,10 +76,12 @@ class UserController {
                         email: findUser.dataValues.email
                     };
                     //const token = jwt.sign(payload, process.env.SECRET);
+
                    const token = await processToken.signToken(payload);
-                   const verifyT = await processToken.verifyToken(token);
-                   const info = verifyT;
-                   console.log(info.id);
+                   
+                //    const verifyT = await processToken.verifyToken(token);
+                //    const info = verifyT;
+                //    console.log(info.id);
                     return res.status(200).json({
                         token: token,
                         messsage: 'Logged in successfully'

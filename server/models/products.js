@@ -6,15 +6,27 @@ export default(sequelize, DataTypes) => {
      },
     productName:
     {
-        type : DataTypes.STRING, 
+        type : DataTypes.STRING,
+        allowNull: {
+          args: false,
+          msg: "Product name is required"
+        } 
     },
     price:
     {
         type : DataTypes.FLOAT,
+        allowNull: {
+            args: false,
+            msg: "Price is required"
+        }
     },
     category:
     {
-        type :  DataTypes.STRING 
+        type :  DataTypes.STRING,
+        allowNull: {
+            args: false,
+            msg: "Category is required"
+        }
     }
 
   }, {});

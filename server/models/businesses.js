@@ -5,7 +5,11 @@ export default(sequelize, DataTypes) => {
         type: DataTypes.INTEGER, 
      },
     name: {
-         type: DataTypes.STRING 
+         type: DataTypes.STRING,
+         allowNull: {
+           args: false,
+           msg: "Business Name is required"
+         } 
           }
   }, {});
   Businesses.associate = function(models) {

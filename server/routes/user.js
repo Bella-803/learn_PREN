@@ -3,11 +3,13 @@ import userController from "../controller/UserController";
 import businessController from "../controller/businessController";
 import productController from "../controller/productController";
 import processToken from "../helpers/processToken";
+import userMiddleware from "../middleware/user";
+
 import jwt from "jsonwebtoken";
 
 const router = express.Router();
 
-router.post("/signup",userController.signUp);
+router.post("/signup", userMiddleware.checkSignUp ,userController.signUp);
 router.post("/login",userController.login);
 
 router.post("/createBusiness/:userId",businessController.createBusiness);

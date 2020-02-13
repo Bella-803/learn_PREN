@@ -144,10 +144,11 @@ const { Users } = model;
     static async registerBusiness(req,res){
         try {
             
-            const token = req.headers['x-access-token'];
+            const token = req.headers.token;
               if(!token) return res.status(404).send({message: "no token found"})
 
-            const verifyT = jwt.verify(token, process.env.SECRET);
+           // const verifyT = jwt.verify(token, process.env.SECRET);
+            const verifyT = await processToken.verifyToken(token);
             const userId = verifyT.id;
             // console.log(userId);
 
@@ -167,9 +168,6 @@ const { Users } = model;
                 return res.status(404).send(error)
             }
 
-            // res.status(200).send({
-            //     verifyT
-            // })
         } catch (error) {
             res.status(500).send({
                 message: "error : "+error
